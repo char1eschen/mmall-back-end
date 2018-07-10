@@ -1,0 +1,8 @@
+{
+  "name": "mmall-back-end",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/char1eschen/mmall-back-end.git",
+  "author": "Charles Chen",
+  "license": "MIT"
+}
