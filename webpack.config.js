@@ -2,7 +2,7 @@
 * @Author: char1eschen
 * @Date:   2018-07-10 23:13:46
 * @Last Modified by:   char1eschen
-* @Last Modified time: 2018-07-11 15:47:40
+* @Last Modified time: 2018-07-12 20:30:24
 */
 const path = require('path');
 const webpack = require('webpack');
@@ -15,6 +15,11 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/dist/',
     filename: 'js/app.js'
+  },
+  resolve: {
+    alias: {
+      page: path.resolve(__dirname, 'src/page'),
+    }
   },
   module: {
     rules: [
