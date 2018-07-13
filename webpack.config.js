@@ -2,7 +2,7 @@
 * @Author: char1eschen
 * @Date:   2018-07-10 23:13:46
 * @Last Modified by:   char1eschen
-* @Last Modified time: 2018-07-12 20:30:24
+* @Last Modified time: 2018-07-13 11:41:08
 */
 const path = require('path');
 const webpack = require('webpack');
@@ -19,6 +19,7 @@ module.exports = {
   resolve: {
     alias: {
       page: path.resolve(__dirname, 'src/page'),
+      component: path.resolve(__dirname, 'src/component')
     }
   },
   module: {
@@ -75,7 +76,8 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/index.html'
+      template: './src/index.html',
+      favicon: './favicon.ico'
     }),
     new ExtractTextPlugin("css/[name].css"),
     new webpack.optimize.CommonsChunkPlugin({
@@ -84,6 +86,9 @@ module.exports = {
     })
   ],
   devServer: {
-    port: 8086
+    port: 8086,
+    historyApiFallback: {
+      index: '/dist/index.html'
+    }
   }
 };
