@@ -16,6 +16,9 @@ class Login extends React.Component{
       redirect: _mm.getUrlParam('redirect') || '/'
     }
   }
+  componentWillMount(){
+    document.title = 'Login - MMALL ADMIN';
+  }
   //input username and password
   onInputChange(e){
     let inputValue = e.target.value,
@@ -23,6 +26,12 @@ class Login extends React.Component{
     this.setState({
       [inputName]: inputValue,
     });
+  }
+  //press enter
+  onInputKeyUp(e){
+    if(e.keyCode === 13){
+      this.onSubmit();
+    }
   }
   //when input value submit
   onSubmit(){
@@ -34,7 +43,7 @@ class Login extends React.Component{
     //validation pass
     if(checkResult.status){
       _user.login(loginInfo).then((res) => {
-        // console.log(this.state.redirect);
+        _mm.setStorage('userInfo', res);
         this.props.history.push(this.state.redirect);
       }, (errMsg) => {
         _mm.errorTips(errMsg);
@@ -57,6 +66,7 @@ class Login extends React.Component{
                       name="username"
                       className="form-control" 
                       placeholder="Please input username" 
+                      onKeyUp={e => this.onInputKeyUp(e)}
                       onChange={e => this.onInputChange(e)}/>
               </div>
               <div className="form-group">
@@ -64,6 +74,7 @@ class Login extends React.Component{
                       name="password"
                       className="form-control" 
                       placeholder="Please input password" 
+                      onKeyUp={e => this.onInputKeyUp(e)}
                       onChange={e => this.onInputChange(e)}/>
               </div>
               <button className="btn btn-lg btn-primary btn-block"

@@ -2,7 +2,7 @@
 * @Author: char1eschen
 * @Date:   2018-07-10 23:13:46
 * @Last Modified by:   char1eschen
-* @Last Modified time: 2018-07-13 20:21:07
+* @Last Modified time: 2018-07-18 11:31:36
 */
 const path = require('path');
 const webpack = require('webpack');
@@ -94,6 +94,10 @@ module.exports = {
     },
     proxy: {
       '/manage': {
+        target: 'http://admintest.happymmall.com',
+        changeOrigin : true
+      },
+      '/user/logout.do': {
         target: 'http://admintest.happymmall.com',
         changeOrigin : true
       }

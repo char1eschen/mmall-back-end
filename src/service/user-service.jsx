@@ -33,6 +33,23 @@ class User{
       msg: 'Validation passed'
     }
   }
+  //logout
+  logout(){
+    return _mm.request({
+      type: 'post',
+      url: '/user/logout.do'
+    })
+  }
+  //get user list
+  getUserList(pageNum){
+    return _mm.request({
+      type: 'post',
+      url: '/manage/user/list.do',
+      data: {
+        pageNum: pageNum
+      }
+    }) 
+  }
 }
 
 export default User;

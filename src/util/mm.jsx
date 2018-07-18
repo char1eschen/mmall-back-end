@@ -6,10 +6,10 @@ class MUtil{
         url       : param.url       || '',
         dataType  : param.dataType  || 'json',
         data      : param.data      || null,
-        success(res){
+        success   : res => {
           //if request successful
           if(0 === res.status){
-            typeof resolve === 'fuction' && resolve(res.data, res.msg);
+            typeof resolve === 'function' && resolve(res.data, res.msg);
           }
           //didn't login, force login
           else if (10 === res.status){
@@ -17,19 +17,18 @@ class MUtil{
           }
           //
           else{
-            typeof reject === 'fuction' && reject(res.msg || res.data);            
+            typeof reject === 'function' && reject(res.msg || res.data);            
           }
         },
-        error(err){
-          console.log(err)
-          typeof reject === 'fuction' && reject(ree.statusText);            
+        error     : err => {
+          typeof reject === 'function' && reject(err.statusText);            
         }
       });
     }); 
   }
   //redirect to login
   doLogin(){
-    window.location.herf = '/login?redirect=' + encodeURIComponent(window.loaction.pathname);
+    window.location.href = '/login?redirect=' + encodeURIComponent(window.location.pathname);
   }
   //get URL
   getUrlParam(name){
@@ -41,6 +40,36 @@ class MUtil{
   //error message
   errorTips(errMsg){
     alert(errMsg || 'Something goes wrong:)')
+  }
+  //save data to local machine
+  setStorage(name, data){
+    let dataType = typeof data;
+    //json objects
+    if(dataType === 'object'){
+        window.localStorage.setItem(name, JSON.stringify(data));
+    }
+    //normal objects
+    else if(['number','string','boolean'].indexOf(dataType) >= 0){
+        window.localStorage.setItem(name, data);
+    }
+    //other unsupport objects
+    else{
+        alert('该类型不能用于本地存储');
+    }
+  }
+  //get local storage
+  getStorage(name){
+    let data = window.localStorage.getItem(name);
+    if(data){
+      return JSON.parse(data);
+    }
+    else{
+        return '';
+    }
+  }
+  //delete local storage
+  removeStorage(name){
+    window.localStorage.removeItem(name);
   }
 }
 

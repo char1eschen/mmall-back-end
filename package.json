@@ -26,6 +26,7 @@
     "webpack-dev-server": "2.9.7"
   },
   "dependencies": {
+    "rc-pagination": "^1.16.5",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-router-dom": "4.2.2"
