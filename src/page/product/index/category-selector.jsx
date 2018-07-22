@@ -28,6 +28,30 @@ class CategorySelector extends React.Component {
   componentDidMount(){
     this.loadFirstCategory();
   }
+  componentWillReceiveProps(nextProps){
+    let categoryIdChange = this.props.categoryId !== nextProps.categoryId,
+      parentCategoryIdChange = this.props.parentCategoryId !== nextProps.parentCategoryId;
+    //if data doesn't change, no nothing
+    if(!categoryIdChange && !parentCategoryIdChange){
+      return;
+    }
+    //if only has category
+    if(nextProps.parentCategoryId === 0){
+      this.setState({
+        firstCategoryId: nextProps.categoryId,
+        secondCategoryId: 0
+      });
+    }
+    //in has category and sub-category
+    else{
+      this.setState({
+        firstCategoryId: nextProps.parentCategoryId,
+        secondCategoryId: nextProps.categoryId
+      }, () => {
+        parentCategoryIdChange && this.loadSecondCategory();
+      });
+    }   
+  }
   //load category
   loadFirstCategory(){
     _product.getCategoryList().then(res => {
