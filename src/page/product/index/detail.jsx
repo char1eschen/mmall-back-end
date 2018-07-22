@@ -20,6 +20,7 @@ class ProductDetail extends React.Component {
   constructor(props){
     super(props);
     this.state = {
+      id: this.props.match.params.pid,
       name: '',
       subtitle: '',
       price: '',
@@ -37,14 +38,15 @@ class ProductDetail extends React.Component {
   //load product details
   loadProduct(){
     if(this.state.id){
-      _product.getProduct(this.state.id).then((res) => {              let images = res.subImages.split(',');
+      _product.getProduct(this.state.id).then((res) => {
+        let images = res.subImages.split(',');
         res.subImages = images.map((imgUri) => {
           return {
             uri: imgUri,
             url: res.imageHost + imgUri
           }
         });
-          this.setState(res);
+        this.setState(res);
       }, (errMsg) => {
         _mm.errorTips(errMsg);
       });
@@ -53,7 +55,7 @@ class ProductDetail extends React.Component {
   render(){
     return(
       <div id="page-wrapper">
-        <PageTitle title="Add product" />
+        <PageTitle title="Product detail" />
         <div className="form-horizontal">
           <div className="form-group">
             <label className="col-md-2 control-label">Product Name</label>
@@ -76,22 +78,21 @@ class ProductDetail extends React.Component {
           </div>
           <div className="form-group">
             <label className="col-md-2 control-label">Price</label>
-              <div className="col-md-3">
-                <div className="input-group">
-                  <input type="number" className="form-control" 
-                    value={this.state.price} readOnly/>
-                  <span className="input-group-addon">元</span>
-                </div>
+            <div className="col-md-3">
+              <div className="input-group">
+                <span className="input-group-addon">$</span>
+                <input type="number" className="form-control" 
+                  value={this.state.price} readOnly/>
               </div>
+            </div>
           </div>
           <div className="form-group">
             <label className="col-md-2 control-label">Stock</label>
             <div className="col-md-3">
               <div className="input-group">
                 <span className="input-group-addon">Qty</span>
-                <input type="number" 
-                  value={this.state.stock} readOnly
-                  className="form-control" />
+                <input type="number" className="form-control"
+                  value={this.state.stock} readOnly/>
               </div>
             </div>
           </div>
@@ -102,18 +103,15 @@ class ProductDetail extends React.Component {
                 this.state.subImages.length ? this.state.subImages.map(
                   (image, index) => (
                     <div className="img-con" key={index}>
-                      <img src={image.url} />
-                    </div>
-                    )
+                      <img className="img" src={image.url} />
+                    </div>)
                 ) : (<div>No images</div>)
               }
             </div>
           </div>
           <div className="form-group">
             <label className="col-md-2 control-label">Product detail</label>
-            <div className="col-md-10">
-              {this.state.detail}
-            </div>
+            <div className="col-md-10" dangerouslySetInnerHTML={{__html: this.state.detail}}></div>
           </div>
         </div>
       </div>

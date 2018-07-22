@@ -21,6 +21,7 @@ class ProductSave extends React.Component {
   constructor(props){
     super(props);
     this.state = {
+      id: this.props.match.params.pid,
       name: '',
       subtitle: '',
       price: '',
@@ -157,10 +158,10 @@ class ProductSave extends React.Component {
           </div>
           <div className="form-group">
             <label className="col-md-2 control-label">Category</label>
-            <CategorySelector onCategoryChange={
-              (categoryId, parentCategoryId) => this.onCategoryChange(categoryId, parentCategoryId)} 
-              parentCategoryId={this.state.parentCategoryId}
-              onCategoryChange={(categoryId, parentCategoryId) => this.onCategoryChange(categoryId, parentCategoryId)} />
+            <CategorySelector 
+              categoryId={this.state.categoryId}
+              onCategoryChange={(categoryId, parentCategoryId) => this.onCategoryChange(categoryId, parentCategoryId)} 
+              parentCategoryId={this.state.parentCategoryId} />
           </div>
           <div className="form-group">
             <label className="col-md-2 control-label">Price</label>
@@ -185,6 +186,7 @@ class ProductSave extends React.Component {
                   className="form-control" 
                   placeholder="Stock" 
                   name="stock"
+                  value={this.state.stock}
                   onChange={(e) => this.onValueChange(e)} />
               </div>
             </div>
