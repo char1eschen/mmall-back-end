@@ -37,9 +37,13 @@ class MUtil{
         result = queryString.match(reg);
     return result ? decodeURIComponent(result[2]) : null;
   }
+  //successful message
+  successTips(successMsg){
+    alert(successMsg || 'Operation is successful:)');
+  }
   //error message
   errorTips(errMsg){
-    alert(errMsg || 'Something goes wrong:)')
+    alert(errMsg || 'Something goes wrong:(');
   }
   //save data to local machine
   setStorage(name, data){
@@ -54,7 +58,7 @@ class MUtil{
     }
     //other unsupport objects
     else{
-        alert('该类型不能用于本地存储');
+        alert('Data cannot save to local machine');
     }
   }
   //get local storage

@@ -31,7 +31,7 @@ class Home extends React.Component{
   render(){
     return(
       <div id="page-wrapper">
-      <PageTitle title="Home Page" />
+      <PageTitle title="Dashboard" />
         <div className="row">
           <div className="col-md-4">
             <Link to="/user" className="color-box brown">

@@ -13,7 +13,7 @@ class NavSide extends React.Component{
             <li>
               <NavLink exact activeClassName="active-menu" to="/">
                 <i className="fas fa-tachometer-alt"></i> 
-                <span>Hpme Page</span>
+                <span>Dashboard</span>
               </NavLink>
             </li>
             
