@@ -127,8 +127,8 @@ class ProductList extends React.Component{
                       onClick={(e) => {this.onSetProductStatus(e, product.id, product.status)}}>{product.status == 1 ? 'Discontinue' : 'Launch'}</button>
                   </td>
                   <td>
-                    <Link className="opera" to={ `/product/detail/${product.id}` }>Details</Link>
-                    <Link className="opera" to={ `/product/save/${product.id}` }>Edit</Link>
+                    <Link to={`/product/detail/${product.id}`} className="opera">Details</Link>
+                    <Link to={`/product/save/${product.id}`} className="opera">Edit</Link>
                   </td>
                 </tr>
               );

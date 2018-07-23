@@ -36,6 +36,8 @@ class CategoryList extends React.Component{
   }
   //load category list
   loadCategoryList(){
+    let listParam = {};
+    listParam.pageNum = this.state.pageNum;
     _product.getCategoryList(this.state.parentCategoryId).then(res => {
       this.setState({
         list: res
@@ -106,6 +108,10 @@ class CategoryList extends React.Component{
           <TableList tableHeads={['Product Id', 'Product name', 'Edit']}>
             {listBody}
           </TableList>
+          <Pagination 
+          current={this.state.pageNum} 
+          total={this.state.total} 
+          onChange={(pageNum) => this.onPageNumChange(pageNum)}/>
       </div>
     );
   }
