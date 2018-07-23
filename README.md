@@ -19,7 +19,7 @@ install
 start the project
 ```
 dev model:
-> yarn run dev (windows OS please use: yarn run dev_win)
+> yarn run dev
 
 dist model:
 > yarn run dist (windows OS please use: yarn run dist_win)
