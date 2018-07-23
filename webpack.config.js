@@ -2,18 +2,20 @@
 * @Author: char1eschen
 * @Date:   2018-07-10 23:13:46
 * @Last Modified by:   char1eschen
-* @Last Modified time: 2018-07-18 11:31:36
+* @Last Modified time: 2018-07-23 23:15:03
 */
 const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+let WEBPACK_ENV = process.env.WEBPACK_ENV || 'dev';
+console.log(WEBPACK_ENV);
 module.exports = {
   entry: './src/app.jsx',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    publicPath: '/dist/',
+    publicPath: WEBPACK_ENV === 'dev' ? '/dist/' : '',
     filename: 'js/app.js'
   },
   resolve: {
