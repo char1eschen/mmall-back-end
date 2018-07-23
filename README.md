@@ -1,6 +1,6 @@
 # MMall admin system
 
-![](https://github.com/char1eschen/mmall-back-end/blob/admin-v2/screenshots/project-showcase-mmalladmin.png)
+![](https://github.com/char1eschen/mmall-back-end/blob/master/screenshots/project-showcase-mmalladmin.png)
 
 ## Description
 - MMall Admin System is developed for E-Commerce website MMall, mainly created by React.js and React-Router.
