@@ -19,7 +19,7 @@ class ListSearch extends React.Component {
   onSearch(){
     this.props.onSearch(this.state.orderNumber);
   }
-  //input keywoar and press enter
+  //input keyword and press enter
   onSearchKeywordKeyUp(e){
     if(e.keyCode === 13){
       this.onSearch();      

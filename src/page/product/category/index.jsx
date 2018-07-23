@@ -4,7 +4,6 @@ import MUtil from 'util/mm.jsx';
 import Product from 'service/product-service.jsx';
 import PageTitle from 'component/page-title/index.jsx';
 import TableList from 'util/table-list/index.jsx';
-import Pagination from 'util/pagination/index.jsx';
 
 import './category.scss'
 const _mm = new MUtil();
@@ -15,8 +14,7 @@ class CategoryList extends React.Component{
     super(props);
     this.state = {
       list: [],
-      parentCategoryId: this.props.match.params.categoryId || 0,
-      pageNum: 1,
+      parentCategoryId: this.props.match.params.categoryId || 0
     };
   }
   componentDidMount(){
@@ -47,14 +45,6 @@ class CategoryList extends React.Component{
         list: []
       });
       _mm.errorTips(errMsg);
-    });
-  }
-  //when page number change
-  onPageNumChange(pageNum){
-    this.setState({
-      pageNum: pageNum
-    }, () => {
-      this.loadCategoryList();
     });
   }
   onUpdateName(categoryId, categoryName){
@@ -105,13 +95,9 @@ class CategoryList extends React.Component{
               <p>Parent category ID: {this.state.parentCategoryId}</p>
             </div>
         </div>
-          <TableList tableHeads={['Product Id', 'Product name', 'Edit']}>
-            {listBody}
-          </TableList>
-          <Pagination 
-          current={this.state.pageNum} 
-          total={this.state.total} 
-          onChange={(pageNum) => this.onPageNumChange(pageNum)}/>
+        <TableList tableHeads={['Product Id', 'Product name', 'Edit']}>
+          {listBody}
+        </TableList>
       </div>
     );
   }

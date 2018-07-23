@@ -20,7 +20,7 @@ class ListSearch extends React.Component {
   onSearch(){
     this.props.onSearch(this.state.searchType, this.state.searchKeyword);
   }
-  //input keywoar and press enter
+  //input keyword and press enter
   onSearchKeywordKeyUp(e){
     if(e.keyCode === 13){
       this.onSearch();      
@@ -51,7 +51,7 @@ class ListSearch extends React.Component {
               </div>
               <button 
                 className="btn btn-primary"
-                onClick={(e) => {this.onSearch(e)}}>Search</button>
+                onClick={(e) => {this.onSearch()}}>Search</button>
             </div>
         </div>
       </div>

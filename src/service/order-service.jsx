@@ -12,7 +12,7 @@ class Order{
     }else if (listParam.listType === 'search'){
       url = '/manage/order/search.do';
       data.pageNum = listParam.pageNum;
-      data.orederNo = listParam.orderNo;
+      data.orderNo = listParam.orderNo;
     }
     return _mm.request({
       type: 'post',
@@ -26,7 +26,7 @@ class Order{
       type: 'post',
       url: '/manage/order/detail.do',
       data: {
-        orderNp: orderNumber
+        orderNo: orderNumber
       }
     }); 
   }
