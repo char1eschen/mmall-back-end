@@ -2,7 +2,7 @@
 * @Author: char1eschen
 * @Date:   2018-07-10 23:13:46
 * @Last Modified by:   char1eschen
-* @Last Modified time: 2018-07-24 21:59:52
+* @Last Modified time: 2018-07-25 12:53:02
 */
 const path = require('path');
 const webpack = require('webpack');
@@ -15,7 +15,7 @@ module.exports = {
   entry: './src/app.jsx',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    publicPath: WEBPACK_ENV === 'dev' ? '/dist/' : '//s.charliechen.me/admin-v2-fe/dist/',
+    publicPath: WEBPACK_ENV === 'dev' ? '/dist/' : '//s.rubychen.me/admin-v2-fe/dist/',
     filename: 'js/app.js'
   },
   resolve: {
