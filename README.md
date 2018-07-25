@@ -4,7 +4,7 @@
 
 ## Description
 - MMall Admin System is developed for E-Commerce website MMall, mainly created by React.js and React-Router.
-- You can visit the [Demo website](http://adminv2.happymmall.com/). 
+- You can visit the [Demo website](http://adminv2.rubychen.me/). 
 
 ## How to install
 clone to local directory 
