@@ -53,7 +53,7 @@ class UserList extends React.Component{
     return(
       <div id="page-wrapper">
         <PageTitle title="Users list"/>
-          <TableList tableHeads={['ID', 'Username', 'Phone', 'Regist date']}>
+          <TableList tableHeads={['ID', 'Username', 'Email', 'Phone', 'Regist date']}>
             {listBody}
           </TableList>
         <Pagination 
